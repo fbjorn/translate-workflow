@@ -1,5 +1,6 @@
-WF_DIR = ${HOME}/Documents/Alfred/Alfred.alfredpreferences/workflows/translate-workflow
-SRC = conf.py main.py info.plist lib icon.png
+SRC := conf.py main.py info.plist lib icon.png
+WF_DIR := ${HOME}/Documents/Alfred/Alfred.alfredpreferences/workflows/translate-workflow
+VERSION := $(shell grep -Eo 'string.*[0-9]+\.[0-9]+\.[0-9]+.*string' info.plist | cut -d">" -f2 | cut -d"<" -f1)
 
 all: pip link
 
@@ -17,3 +18,7 @@ clean:
 	for f in ${SRC} ; do \
   		unlink "${WF_DIR}/$$f"; \
   	done
+
+release:
+	git tag ${VERSION}
+	git push origin ${VERSION}

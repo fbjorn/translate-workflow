@@ -1,8 +1,9 @@
-name: Create Alfred Workflow
+name: Publish Alfred Workflow
 
 on:
   push:
-    branches: [gh-actions]
+    tags:
+      - "*"
 
 jobs:
   build:
