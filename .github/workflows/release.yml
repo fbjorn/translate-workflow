@@ -27,13 +27,12 @@ jobs:
           release_name: ${{ github.ref }}
           draft: false
           prerelease: false
-#
-#    - name: Upload Alfred Workflow
-#      uses: actions/upload-release-asset@v1
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#      with:
-#        upload_url: ${{ steps.create_release.outputs.upload_url }}
-#        asset_path: ${{ steps.alfred_builder.outputs.workflow_file }}
-#        asset_name: ${{ steps.alfred_builder.outputs.workflow_file }}
-#        asset_content_type: application/zip
+      - name: Upload Alfred Workflow
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ steps.alfred_builder.outputs.workflow_file }}
+          asset_name: ${{ steps.alfred_builder.outputs.workflow_file }}
+          asset_content_type: application/zip
