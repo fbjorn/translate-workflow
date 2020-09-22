@@ -1,0 +1,2 @@
+Alfred-Workflow==1.40.0
+requests==2.24.0
