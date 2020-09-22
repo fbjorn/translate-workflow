@@ -4,10 +4,8 @@ SRC = conf.py main.py info.plist lib icon.png
 all: pip link
 
 pip:
-	python2 -m pip install wheel
 	python2 -m pip install --upgrade pip
-	python2 -m pip --version
-	python2 -m pip install --target=./lib Alfred-Workflow==1.40.0
+	python2 -m pip install --target=./lib -r _requirements.txt
 
 link:
 	mkdir -p "${WF_DIR}"
