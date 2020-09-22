@@ -1,0 +1,19 @@
+name: Create Alfred Workflow
+
+on:
+  push:
+    branches: [gh-actions]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build project
+        run: make pip
+      - name: Build Alfred Workflow
+        #        id: alfred_builder
+        uses: mperezi/build-alfred-workflow@v1
+        with:
+          workflow_dir: "."
+          exclude_patterns: "*.pyc *__pycache__/*"
