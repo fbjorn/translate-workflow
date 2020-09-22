@@ -5,7 +5,8 @@ all: pip link
 
 pip:
 	python2 -m pip install wheel
-	python2 -m pip install --target=./lib -r _requirements.txt --prefix=
+	python2 -m pip --version
+	python2 -m pip install --target=./lib Alfred-Workflow==1.40.0
 
 link:
 	mkdir -p "${WF_DIR}"
