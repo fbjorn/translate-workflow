@@ -4,7 +4,8 @@ SRC = conf.py main.py info.plist lib icon.png
 all: pip link
 
 pip:
-	python2 -m pip install --target=./lib -r _requirements.txt
+	python2 -m pip install wheel
+	python2 -m pip install --target=./lib -r _requirements.txt --prefix=
 
 link:
 	mkdir -p "${WF_DIR}"

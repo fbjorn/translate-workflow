@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install wheel
-        run: python2 -m pip install wheel
       - name: Build project
         run: make pip
       - name: Build Alfred Workflow
