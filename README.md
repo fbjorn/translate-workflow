@@ -4,29 +4,30 @@ Alfred workflow for translating text and making dictionary lookup.
 
 Built on top of Yandex Dictionary API and Yandex Translate API.
 
-### Features
+## Features
 
 - Automatic translation from Russian to English and vice versa
 - Show synonyms and examples when translating a word
 - Triggered both by `t` (eng) and `е` (rus) prefix
 - Global hotkey for translation of the selected text
 
-### Installation
+## Installation
 
-> TODO: publish package to Packal or use GitHub releases
+[Download](https://github.com/fbjorn/translate-workflow/releases/) Alfred
+workflow and open it
 
-### Configuration
+## Configuration
 
 Before start using this awesome workflow, you need to proceed with following
 steps:
 
-##### To enable words translation:
+#### To enable words translation:
 
 1. Obtain Dictionary [API key](https://yandex.ru/dev/dictionary/keys/get/). It's
    free
 2. Invoke Alfred and type `tset <API_KEY>`. Choose _Save as Dictionary Api Key_
 
-##### To enable text translation:
+#### To enable text translation:
 
 1. This step requires paid account on
    [Yandex.Cloud](https://cloud.yandex.ru/docs/translate/). It's extremely cheap
@@ -39,11 +40,11 @@ steps:
 
 > Note: All your keys and tokens are stored in the OSX Keychain securely
 
-### Usage
+## Usage
 
 Just type `t <word>` or `t <phrase>` and you'll get the input translated
 
-### Local development
+## Local development
 
 ```bash
 make
@@ -61,7 +62,6 @@ Then just open Alfred on Workflows tab and you'll find it.
 - Add spell checks
 - Cache API Keys to not access OSX Keychain every time
 - Cache API responses locally
-- Make first release
 
 ---
 
