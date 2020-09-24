@@ -8,6 +8,7 @@ Built on top of Yandex Dictionary API and Yandex Translate API.
 
 - Automatic translation from Russian to English and vice versa
 - Show synonyms and examples when translating a word
+- Correct spelling errors
 - Triggered both by `t` (eng) and `е` (rus) prefix
 - Global hotkey for translation of the selected text
 
@@ -59,13 +60,14 @@ Then just open Alfred on Workflows tab and you'll find it.
 
 - Store desired languages in local settings
 - Auto detect source language
-- Add spell checks
 - Cache API Keys to not access OSX Keychain every time
 - Cache API responses locally
+- Add screenshots
 
 ---
 
-Made with [alfred-python-template](https://github.com/fbjorn/alfred-python-template)
+Made with
+[alfred-python-template](https://github.com/fbjorn/alfred-python-template)
 
 Icons made by
 <a href="https://www.flaticon.com/authors/photo3idea-studio" title="photo3idea_studio">photo3idea_studio</a>

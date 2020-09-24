@@ -21,11 +21,37 @@
 				<false/>
 			</dict>
 		</array>
+		<key>89768A5A-16E6-442F-9631-352E90967398</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0FF724F9-006C-4C6B-BC27-BFF94E6109E0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>9FDB40D2-56C7-44DD-A586-4283F58CF8DF</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>F7196D93-A0A6-4CE6-8FFF-9D912152E520</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>DF11B65C-9246-46C2-AB8E-1921BD89272A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0FF724F9-006C-4C6B-BC27-BFF94E6109E0</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -45,6 +71,37 @@
 	<string>Yandex Translate</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>1</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>17</integer>
+				<key>hotmod</key>
+				<integer>655360</integer>
+				<key>hotstring</key>
+				<string>T</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>7553114A-C51B-482F-B198-69EA92CC78FA</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -87,6 +144,11 @@
 				<key>withspace</key>
 				<true/>
 			</dict>
+			<key>inboundconfig</key>
+			<dict>
+				<key>externalid</key>
+				<string>translate</string>
+			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
@@ -97,33 +159,21 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>1</integer>
-				<key>focusedappvariable</key>
-				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>17</integer>
-				<key>hotmod</key>
-				<integer>655360</integer>
-				<key>hotstring</key>
-				<string>T</string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedAppsMode</key>
-				<integer>0</integer>
+				<key>externaltriggerid</key>
+				<string>translate</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
+			<string>alfred.workflow.output.callexternaltrigger</string>
 			<key>uid</key>
-			<string>7553114A-C51B-482F-B198-69EA92CC78FA</string>
+			<string>0FF724F9-006C-4C6B-BC27-BFF94E6109E0</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -271,6 +321,13 @@
 &gt; Note: All your keys and tokens are stored in the OSX Keychain securely</string>
 	<key>uidata</key>
 	<dict>
+		<key>0FF724F9-006C-4C6B-BC27-BFF94E6109E0</key>
+		<dict>
+			<key>xpos</key>
+			<integer>540</integer>
+			<key>ypos</key>
+			<integer>140</integer>
+		</dict>
 		<key>7553114A-C51B-482F-B198-69EA92CC78FA</key>
 		<dict>
 			<key>xpos</key>
@@ -297,7 +354,7 @@
 			<key>xpos</key>
 			<integer>285</integer>
 			<key>ypos</key>
-			<integer>200</integer>
+			<integer>190</integer>
 		</dict>
 		<key>F7196D93-A0A6-4CE6-8FFF-9D912152E520</key>
 		<dict>

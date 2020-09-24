@@ -16,6 +16,7 @@ RU_ALPHA = u"йцукенгшщзхъфывапролджэёячсмитьбю"
 
 Y_DICT_URL = "https://dictionary.yandex.net/api/v1/dicservice.json/lookup"
 Y_TRANSLATE_URL = "https://translate.api.cloud.yandex.net/translate/v2/translate"
+Y_SPELLER_URL = "https://speller.yandex.net/services/spellservice.json/checkText"
 
 
 def is_russian(s):
@@ -34,9 +35,9 @@ def dictionary_lookup(word, key):
     resp = lib.requests.get(url)
     resp.raise_for_status()
 
-    result = resp.json() or {"def": []}
+    result = resp.json().get("def", [])
     items = []
-    for definition in result["def"]:
+    for definition in result:
         for tr in definition["tr"]:
             subtitle = ""
             if definition.get("ts"):
@@ -52,6 +53,19 @@ def dictionary_lookup(word, key):
                 subtitle += " (" + " / ".join(examples) + ")"
             items.append(Item(title=tr["text"], subtitle=subtitle))
     return items
+
+
+def check_spelling(word):
+    # type: (unicode) -> List[Item]
+    lang = u"ru" if is_russian(word) else u"en"
+    url = u"{}?text={}&lang={}".format(Y_SPELLER_URL, word, lang)
+    resp = lib.requests.get(url)
+    resp.raise_for_status()
+
+    data = resp.json()
+    if data:
+        return [Item(title=s, subtitle="") for s in data[0].get("s", [])]
+    return []
 
 
 def translate_phrase(phrase, token):
@@ -84,7 +98,23 @@ def main(wf):
     # type: (Workflow) -> int
 
     query = wf.args[0].strip().rstrip()  # type: unicode
-    if " " in query:
+    dictionary_mode = " " not in query
+    if dictionary_mode:
+        try:
+            trs = dictionary_lookup(query, wf.get_password(Y_DICT_KEY))
+        except KeychainError:
+            return err(
+                wf,
+                "No API Key found",
+                "Please set Dictionary API key with qset command",
+            )
+        except HTTPError:
+            return err(
+                wf,
+                "Yandex Translate error",
+                "Make sure you set Dictionary API key properly",
+            )
+    else:
         try:
             wf.clear_data()
             trs = translate_phrase(query, wf.get_password(Y_TRANSLATE_TOKEN))
@@ -100,25 +130,17 @@ def main(wf):
                 "Yandex Translate error",
                 "Make sure you set Translate API token properly",
             )
-    else:
-        try:
-            trs = dictionary_lookup(query, wf.get_password(Y_DICT_KEY))
-        except KeychainError:
-            return err(
-                wf,
-                "No API Key found",
-                "Please set Dictionary API key with qset command",
-            )
-        except HTTPError:
-            return err(
-                wf,
-                "Yandex Translate error",
-                "Make sure you set Dictionary API key properly",
-            )
 
     for tr in trs:
         wf.add_item(title=tr.title, subtitle=tr.subtitle)
-    if not trs:
+
+    if not trs and dictionary_mode:
+        suggestions = check_spelling(query)
+        for s in suggestions:
+            wf.add_item(title=s.title, arg=s.title, valid=True)
+        if not suggestions:
+            wf.add_item("Nothing found..")
+    elif not trs:
         wf.add_item("Nothing found..")
 
     wf.send_feedback()
