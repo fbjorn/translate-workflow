@@ -12,6 +12,12 @@ Built on top of Yandex Dictionary API and Yandex Translate API.
 - Triggered both by `t` (eng) and `е` (rus) prefix
 - Global hotkey for translation of the selected text
 
+Examples:
+
+![English to Russian](./examples/eng-rus.png)
+![Russian to English](./examples/run-eng.png)
+![Spelling correction](./examples/wrong.png)
+
 ## Installation
 
 [Download](https://github.com/fbjorn/translate-workflow/releases/) Alfred
@@ -62,7 +68,6 @@ Then just open Alfred on Workflows tab and you'll find it.
 - Auto detect source language
 - Cache API Keys to not access OSX Keychain every time
 - Cache API responses locally
-- Add screenshots
 
 ---
 
